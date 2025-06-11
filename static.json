@@ -1,12 +1,10 @@
 {
     "root": "dist/menu",
-    "clean_urls": true,
     "routes": {
       "/**": "index.html"
     },
-    "https_only": true,
-    "headers": {
-      "/**": {
+    "httpHeaders": {
+      "/*": {
         "Cache-Control": "no-cache"
       }
     }
