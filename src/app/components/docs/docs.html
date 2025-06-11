@@ -1,0 +1,79 @@
+<h3>Environnements disponibles</h3>
+<ul>
+  <li><strong>Sandbox (test)</strong> : <code>https://devapi.mvola.mg</code></li>
+  <li><strong>Production</strong> : <code>https://api.mvola.mg</code></li>
+</ul>
+
+<h3>Ressources de l’API</h3>
+<ul>
+  <li><strong>POST</strong> – Initier une transaction<br>
+    <code>/mvola/mm/transactions/type/merchantpay/1.0.0/</code>
+  </li>
+  <li><strong>GET</strong> – Détails d'une transaction<br>
+    <code>/mvola/mm/transactions/type/merchantpay/1.0.0/<span>[transID]</span></code>
+  </li>
+  <li><strong>GET</strong> – Statut d'une transaction<br>
+    <code>/mvola/mm/transactions/type/merchantpay/1.0.0/status/<span>[serverCorrelationId]</span></code>
+  </li>
+</ul>
+
+<h3>Authentification</h3>
+<p>
+  Pour accéder à l’API, vous devez utiliser un <strong>access token OAuth2</strong> :
+</p>
+<ul>
+  <li>Endpoint : <code>/token</code></li>
+  <li>Authorization : <code>Basic &lt;base64(client_id:client_secret)&gt;</code></li>
+  <li>Body : <code>grant_type=client_credentials</code></li>
+</ul>
+
+<h3>Headers</h3>
+
+<p>L'API requiert un header spécifique pour fonctionner:</p>
+
+<div class="copyable">
+  <div class="copy"><i class="fa-regular fa-clipboard"></i></div>
+  <pre>{{ headers | json }}</pre>
+</div>
+
+<h3>Initier un paiement</h3>
+<p>Utilisez la méthode <code>POST</code> vers :</p>
+<code>/mvola/mm/transactions/type/merchantpay/1.0.0/</code>
+
+<h4>Exemple de body (JSON)</h4>
+<div class="copyable">
+  <div class="copy"><i class="fa-regular fa-clipboard"></i></div>
+  <pre>{{ bodyExample | json }}</pre>
+</div>
+
+<h3>Réponse en cas de succès</h3>
+<div class="copyable">
+  <div class="copy"><i class="fa-regular fa-clipboard"></i></div>
+  <pre>{{ responseExample | json }}</pre>
+</div>
+
+<h3>Réponse callback (paiement réussi)</h3>
+<div class="copyable">
+  <div class="copy"><i class="fa-regular fa-clipboard"></i></div>
+  <pre>{{ callbackExample | json }}</pre>
+</div>
+
+<h3>Détails d'une transaction</h3>
+<p>GET : <code>/mvola/mm/transactions/type/merchantpay/1.0.0/<span>[transID]</span></code></p>
+<p>A noter que: <strong>transID</strong> est donnée par GET STATUS</p>
+
+<h3>Statut d'une transaction</h3>
+<p>GET : <code>/mvola/mm/transactions/type/merchantpay/1.0.0/status/<span>[serverCorrelationId]</span></code></p>
+<p>A noter que: <strong>serverCorrelationId</strong> est donnée en retour par POST (initiation de la transaction)</p>
+<h3>Codes de réponse HTTP</h3>
+<ul>
+  <li><strong>200</strong> – OK</li>
+  <li><strong>400</strong> – Requête invalide</li>
+  <li><strong>401</strong> – Accès non autorisé (token invalide)</li>
+  <li><strong>403</strong> – Accès refusé</li>
+  <li><strong>404</strong> – Ressource introuvable</li>
+  <li><strong>409</strong> – Conflit (doublon de transaction)</li>
+  <li><strong>429</strong> – Trop de requêtes</li>
+  <li><strong>500+</strong> – Erreurs serveur</li>
+</ul>
+

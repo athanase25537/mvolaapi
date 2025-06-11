@@ -1,0 +1,48 @@
+<h2>Exemple de Code : Intégration API MVola</h2>
+
+<p>Voici un extrait réel d'une implémentation backend en Python pour interagir avec l'API <strong>MerchantPay MVola</strong>.</p>
+
+<h3>1. Envoyer une transaction (POST)</h3>
+<div class="copyable">
+  <div class="copy"><i class="fa-regular fa-clipboard"></i></div>
+<pre>
+url = "https://pre-api.mvola.mg/mvola/mm/transactions/type/merchantpay/1.0.0"
+
+access_token = os.getenv("MVOLA_ACCESS_TOKEN") <span class="comments"># dans votre fichier .env vous devriez avoir MVOLA_ACCESS_TOKEN (vous pouvez le generer ici)</span>
+app_num = os.getenv("MVOLA_APP_NUM")
+credit_num = os.getenv("MVOLA_CREDIT_NUM")
+partner_name = os.getenv("MVOLA_PARTNER_NAME")
+
+headers = {{ headers | json }}
+
+payload = {{ payload | json }}
+
+response = requests.post(url, headers=headers, json=payload).json()
+</pre>
+</div>
+
+<h3>2. Vérifier le statut d'une transaction</h3>
+<div class="copyable">
+  <div class="copy"><i class="fa-regular fa-clipboard"></i></div>
+<pre>
+serverCorrelationId = "abc123" <span class="comments"># tu peux trouver cette valeur dans le retour de POST</span>
+url = "https://pre-api.mvola.mg/mvola/mm/transactions/type/merchantpay/1.0.0/status/"+<span class="insert_value">serverCorrelationId</span>
+header = {{ headers | json }}
+response = requests.get(url, headers=headers).json()
+</pre>
+</div>
+
+<h3>3. Obtenir les détails d’une transaction</h3>
+<div class="copyable">
+  <div class="copy"><i class="fa-regular fa-clipboard"></i></div>
+<pre>
+transactionReference = "641235" <span class="comments"># tu peux trouver cette valeur dans le retour de GET DETAILS</span>
+url = "https://pre-api.mvola.mg/mvola/mm/transactions/type/merchantpay/1.0.0/"+<span class="insert_value">transactionReference</span>
+headers = {{ headers | json }}
+response = requests.get(url, headers=headers).json()
+</pre>
+</div>
+
+<p>
+Ces fonctions sont utilisées côté serveur pour communiquer avec MVola. Pensez à sécuriser les <code>ACCESS_TOKEN</code> et autres informations sensibles via des variables d’environnement (<code>.env</code>).
+</p>

@@ -1,0 +1,28 @@
+<h2>Tutoriels API MVola</h2>
+
+<h3>Tutoriel 1 : Créer un compte développeur MVola</h3>
+<ol>
+  <li>Accéder au portail développeur MVola : <a href="https://developer.mvola.mg" target="_blank">developer.mvola.mg</a></li>
+  <li>S'inscrire et valider votre e-mail</li>
+  <li>Créer une application pour obtenir <strong>Client ID</strong> et <strong>Client Secret</strong></li>
+</ol>
+
+<h3>Tutoriel 2 : Générer un access token</h3>
+<ol>
+  <li>Utilisez Postman ou curl pour faire une requête POST à <code>/token</code></li>
+  <li>Inclure les bons headers et body</li>
+  <li>Récupérer le token pour les appels suivants</li>
+</ol>
+
+<h3>Tutoriel 3 : Envoyer un paiement test</h3>
+<ol>
+  <li>Préparer un body JSON avec <code>amount</code>, <code>debitParty</code>, etc.</li>
+  <li>Appeler l’endpoint `/payment` avec le token</li>
+  <li>Recevoir une réponse contenant le statut de la transaction</li>
+</ol>
+
+<h3>Tutoriel 4 : Gérer les erreurs</h3>
+<ul>
+  <li>Ajouter des validations côté frontend</li>
+  <li>Afficher un message clair à l'utilisateur selon le code erreur</li>
+</ul>

@@ -1,0 +1,22 @@
+.copyable {
+    border-radius: 5px;
+    padding-top: 0;
+    border: 1px solid rgb(104, 101, 101);
+
+    .copy {
+        background-color: rgb(104, 101, 101);
+        padding: 7px 10px;
+        font-size: 1.3em;
+        text-align: right;
+        color: white;
+        
+        :hover {
+            cursor: pointer;
+        }
+    }
+
+    pre {
+        padding: 20px;
+        overflow-x: auto;
+    }
+}

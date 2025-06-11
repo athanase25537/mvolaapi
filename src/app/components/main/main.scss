@@ -1,0 +1,9 @@
+#main {
+    padding: 50px 250px 0 250px;
+    transition: padding .3s ease;
+    max-width: 100%;
+}
+
+#main.splited {
+    padding-left: 120px;
+}

@@ -1,0 +1,20 @@
+<aside id="container" [ngClass]="{'splited': split}">
+    <div id="split" (click)="toggleSplit()">
+        <i class="fa-solid fa-angle-left"></i>
+    </div>
+    
+    <h1 class="logo">
+        <small>MVola</small>
+        <span>MVola API</span>
+    </h1>
+    <ul>
+        @for (item of items; track $index) {
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a [routerLink]="item.routerLink">
+                    <i class="{{ item.icon }}"></i>
+                    <span>{{ item.linkName}}</span>
+                </a>
+            </li>
+        }
+    </ul>
+</aside>
